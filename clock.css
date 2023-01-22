@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 'Popins' , sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #acbcca;
+}
+
+.Clock {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    background: #c9d5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 30px 30px 30px -10px rgba(0, 0, 0, 0.15),
+    inset 15px 15px 10px rgba(255, 255, 255, 0.75), -15px -15px 35px rgba(255, 255, 255, 0.55);
+    inset: -1px -1px 10px rgba(255, 255, 255, 0.2);
+}
+
+.Clock::before{
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #e91e63;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 0 0 1px #e91e63, 0 0 0 3px white, 0 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.Clock .number{
+    position: absolute;
+    inset: 35px;
+    background: #152b42;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px #152b4266, inset 5px 5px 5px rgba(255, 255, 255, 0.75),
+    -6px -6px 10px rgba(255, 255, 255, 1) ;
+}
+
+.Clock .number span{
+    position: absolute;
+    inset: 5px;
+    text-align: center;
+    color: white;
+    font-size: 1.25rem;
+    transform: rotate(calc(90deg * var(--i)));
+}
+
+.Clock .number span b{
+    font-weight: 600;
+    display: inline-block;
+    transform: rotate(calc(-90deg * var(--i)));
+}
+
+.Clock .number::before{
+    content: '';
+    position: absolute;
+    inset: 35px;
+    background: linear-gradient(#2196f3, #e91e63);
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(360deg);
+    }
+    100%
+    {
+        transform: rotate(0deg);
+    }
+}
+
+.Clock .number::after{
+    content: '';
+    position: absolute;
+    inset: 38px;
+    background: #152b42;
+    border-radius: 50%;
+   
+}
+
+.Clock .number .cirlce{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.Clock .number .cirlce i{
+    position: absolute;
+    width: 3px;
+    height: 50%;
+    background: white;
+    transform-origin: bottom;
+    transform: scaleY(0.55);
+}
+
+.Clock .number .cirlce#hr i{
+    width: 4px;
+    transform: scaleY(0.3);
+}
+
+.Clock .number .cirlce#mn i{
+    transform: scaleY(0.45);
+}
+
+.Clock .number .cirlce#sc i{
+    width: 2px;
+    transform: scaleY(0.55);
+    background: #e91e63;
+    box-shadow: 0 30px 0 #e91e63;
+}
